@@ -1,0 +1,45 @@
+states = ('Rainy', 'Sunny')
+observations = ('walk', 'shop', 'clean')
+start_probability = {'Rainy': 0.6, 'Sunny': 0.4}
+transition_probability = {
+'Rainy' : {'Rainy': 0.7, 'Sunny': 0.3},
+'Sunny' : {'Rainy': 0.4, 'Sunny': 0.6},
+}
+emission_probability = {
+'Rainy' : {'walk': 0.1, 'shop': 0.4, 'clean': 0.5},
+'Sunny' : {'walk': 0.6, 'shop': 0.3, 'clean': 0.1},}
+#第一天
+a1=start_probability.get('Rainy')*emission_probability.get('Rainy').get('walk')
+a2=start_probability.get('Sunny')*emission_probability.get('Sunny').get('walk')
+if(a1>a2):
+    print('Rainy')
+else:
+    print('Sunny')
+#第二天
+m1=start_probability.get('Rainy')
+m2=start_probability.get('Sunny')
+b1=m1*transition_probability.get('Rainy').get('Rainy')*emission_probability.get('Rainy').get('shop')
+b2=m1*transition_probability.get('Sunny').get('Sunny')*emission_probability.get('Sunny').get('shop')
+b3=m2*transition_probability.get('Rainy').get('Rainy')*emission_probability.get('Rainy').get('shop')
+b4=m2*transition_probability.get('Sunny').get('Sunny')*emission_probability.get('Sunny').get('shop')
+if(b3>b4 or b1>b2):
+    print('Rainy')
+else:
+    print('Sunny')
+#第三天
+n1=m1*transition_probability.get('Rainy').get('Rainy')
+n2=m1*transition_probability.get('Sunny').get('Sunny')
+n3=m2*transition_probability.get('Rainy').get('Rainy')
+n4=m2*transition_probability.get('Sunny').get('Sunny')
+d1=n1*transition_probability.get('Rainy').get('Rainy')*emission_probability.get('Rainy').get('clean')
+d2=n1*transition_probability.get('Sunny').get('Sunny')*emission_probability.get('Sunny').get('clean')
+d3=n2*transition_probability.get('Sunny').get('Sunny')*emission_probability.get('Sunny').get('clean')
+d4=n2*transition_probability.get('Rainy').get('Rainy')*emission_probability.get('Rainy').get('clean')
+d5=n3*transition_probability.get('Sunny').get('Sunny')*emission_probability.get('Sunny').get('clean')
+d6=n3*transition_probability.get('Rainy').get('Rainy')*emission_probability.get('Rainy').get('clean')
+d7=n4*transition_probability.get('Sunny').get('Sunny')*emission_probability.get('Sunny').get('clean')
+d8=n4*transition_probability.get('Rainy').get('Rainy')*emission_probability.get('Rainy').get('clean')
+if(d1>d2 or d4>d3 or d6>d5 or d8>d7):
+    print('Rainy')
+else:
+    print('Sunny')
