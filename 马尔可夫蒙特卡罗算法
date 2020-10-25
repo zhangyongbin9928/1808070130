@@ -1,0 +1,26 @@
+import random
+import matplotlib.pyplot as plt
+import math
+import numpy as np
+a=[]
+b=[] 
+d=[]
+e=[]
+a = (math.pow(0.6, 5) - math.pow(-0.4, 5)) / 5
+def f(x):
+    return math.pow(x-0.4,4)/a
+c = math.pow(x-0.4,4)/a
+def g(x):
+    return  np.random.normal(0.5, 1, 2000)#第一个参数表示均值，第二个参数是方差，第三个参数是产生随机数的个数.
+for i in range(2000)
+x=random.uniform(0, 1)
+y=random.uniform(0, 1)
+    if y <=f(x)/c*g(x) :  
+        d.append(x)
+        e.append(y)
+    else:
+        a.append(x)
+        b.append(y)
+plt.scatter(d,e,color='green')
+plt.scatter(a,b,color='yellow')
+plt.show()
